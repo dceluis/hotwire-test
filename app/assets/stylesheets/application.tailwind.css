@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .b-modal__backdrop {
+    @apply bg-black h-full fixed top-0 left-0 w-full bg-opacity-50;
+    z-index: 99;
+  }
+
+  .b-modal__container {
+    @apply flex items-center justify-center fixed inset-0;
+    z-index: 100;
+  }
+
+  .b-modal__body {
+    @apply bg-white rounded p-5 relative overflow-auto;
+    max-height: 90vh;
+    min-width: 480px;
+    max-width: 800px;
+  }
+
+  .b-button {
+    @apply inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  .b-button:disabled {
+    @apply bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-50 cursor-not-allowed;
+  }
+
+  .b-label {
+    @apply block text-sm font-medium text-gray-700;
+  }
+
+  .b-input {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm
+  }
+
+  .b-input:disabled {
+    @apply bg-slate-200 text-slate-500 border-slate-200 shadow-none cursor-not-allowed;
+  }
+}

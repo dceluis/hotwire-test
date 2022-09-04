@@ -6,3 +6,15 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
+
+import FormController from "./form_controller"
+application.register("form", FormController)
+
+import FormRedirectController from "./form_redirect_controller"
+application.register("form-redirect", FormRedirectController)
+
+import MaskController from "./mask_controller"
+application.register("mask", MaskController)

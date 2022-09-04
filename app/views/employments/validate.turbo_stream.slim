@@ -1,0 +1,10 @@
+- @employments.each_with_index do |employment, i|
+  = turbo_stream.replace "employer_error_employment_#{i}"
+    .text-red-600 id="employer_error_employment_#{i}"
+      = employment.errors.full_messages_for(:employer).join(", ")
+  = turbo_stream.replace "start_date_error_employment_#{i}"
+    .text-red-600 id="start_date_error_employment_#{i}"
+      = employment.errors.full_messages_for(:start_date).join(", ")
+  = turbo_stream.replace "end_date_error_employment_#{i}"
+    .text-red-600 id="end_date_error_employment_#{i}"
+      = employment.errors.full_messages_for(:end_date).join(", ")

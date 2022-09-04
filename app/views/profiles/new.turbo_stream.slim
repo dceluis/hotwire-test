@@ -1,0 +1,15 @@
+= turbo_stream.replace "first_name_error" do
+  .text-red-600#first_name_error
+    = @profile.errors.full_messages_for(:first_name).join(", ")
+= turbo_stream.replace "last_name_error" do
+  .text-red-600#last_name_error
+    = @profile.errors.full_messages_for(:last_name).join(", ")
+= turbo_stream.replace "email_error" do
+  .text-red-600#email_error
+    = @profile.errors.full_messages_for(:email).join(", ")
+= turbo_stream.replace "phone_error" do
+  .text-red-600#phone_error
+    = @profile.errors.full_messages_for(:phone).join(", ")
+= turbo_stream.replace "nickname_error" do
+  .text-red-600#nickname_error
+    = @profile.errors.full_messages_for(:nickname).join(", ")

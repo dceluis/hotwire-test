@@ -1,0 +1,17 @@
+= fields_for "employments[]", employment do |employment_form|
+  label.block.text-gray-700.text-sm.font-bold.mb-2 Employment #{index.to_i + 1}
+  div
+    = employment_form.label :employer, class: "b-label"
+    = employment_form.text_field :employer, class: "b-input", data: { action: "form#validate" }
+    div.text-red-600 id="employer_error_employment_#{index}"
+      = employment.errors.full_messages_for(:employer).join(", ")
+  div
+    = employment_form.label :start_date, class: "b-label"
+    = employment_form.date_field :start_date, class: "b-input", data: { action: "form#validate" }
+    div.text-red-600 id="start_date_error_employment_#{index}"
+      = employment.errors.full_messages_for(:start_date).join(", ")
+  div
+    = employment_form.label :end_date, class: "b-label"
+    = employment_form.date_field :end_date, class: "b-input", data: { action: "form#validate" }
+    div.text-red-600 id="end_date_error_employment_#{index}"
+      = employment.errors.full_messages_for(:end_date).join(", ")
