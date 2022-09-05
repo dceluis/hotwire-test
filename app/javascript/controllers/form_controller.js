@@ -21,7 +21,9 @@ export default class extends Controller {
     this.element.action = this.validateUrl;
     // HACK: This is a hack to get the form to submit
     // this.element.submit(); does not trigger a TURBO_STREAM request
+    this.validatorTarget.disabled = false;
     this.validatorTarget.click();
+    this.validatorTarget.disabled = true;
     this.element.action = oldAction;
   }, 500)
 }

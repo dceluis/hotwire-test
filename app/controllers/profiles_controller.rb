@@ -4,10 +4,13 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = Profile.new(profile_params)
+  end
 
+  def validate
+    @profile = Profile.new(profile_params)
     respond_to do |format|
-      format.html
-      format.turbo_stream { @profile.valid? }
+      # format.html
+      format.turbo_stream { @profile.validate }
     end
   end
 

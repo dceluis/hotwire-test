@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resource :profile, only: [] do
-    post "new", as: :validate, to: "profiles#new", on: :collection
+    post "validate", as: :validate, to: "profiles#validate", on: :collection
   end
 
   resources :profiles, only: [:new, :create] do

@@ -31,4 +31,4 @@
         = @profile.errors.full_messages_for(:nickname).join(", ")
 
     div
-      = f.submit "Save", class: "b-button", data: { form_target: "validator" }
+      = f.submit "Save", id: "submit_profile", class: "b-button", disabled: !@profile.valid?, data: { form_target: "validator" }

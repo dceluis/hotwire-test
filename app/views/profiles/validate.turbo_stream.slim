@@ -13,3 +13,6 @@
 = turbo_stream.replace "nickname_error" do
   .text-red-600#nickname_error
     = @profile.errors.full_messages_for(:nickname).join(", ")
+= turbo_stream.replace "submit_profile" do
+  = fields_for(@profile) do |f|
+    = f.submit "Save", id: "submit_profile", class: "b-button", data: { form_target: "validator" }, disabled: !@profile.valid?

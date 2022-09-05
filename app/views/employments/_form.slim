@@ -5,4 +5,4 @@
   div
     = render partial: "add_employment", locals: { i: "1" }
   div
-    = f.submit "Save", class: "b-button", data: { form_target: "validator" }
+    = submit_tag "Save", id: "submit_employments", class: "b-button", data: { form_target: "validator" }, disabled: !@employments.map(&:valid?).all?

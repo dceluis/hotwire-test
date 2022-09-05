@@ -8,3 +8,5 @@
   = turbo_stream.replace "end_date_error_employment_#{i}"
     .text-red-600 id="end_date_error_employment_#{i}"
       = employment.errors.full_messages_for(:end_date).join(", ")
+= turbo_stream.replace "submit_employments" do
+  = submit_tag "Save", id: "submit_employments", class: "b-button", data: { form_target: "validator" }, disabled: !@employments.map(&:valid?).all?

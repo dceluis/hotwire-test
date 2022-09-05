@@ -18,7 +18,7 @@ class EmploymentsController < ApplicationController
   end
 
   def validate
-    @employments = employment_params.map { |p| Employment.new(p) }
+    @employments = employment_params.map { |ps| @profile.employments.new(ps) }
 
     respond_to do |format|
       # format.html
@@ -27,11 +27,7 @@ class EmploymentsController < ApplicationController
   end
 
   def create
-    @employments = employment_params.map { |p|
-      employment = Employment.new(p)
-      employment.profile = @profile
-      employment
-    }
+    @employments = employment_params.map { |ps| @profile.employments.new(ps) }
 
     Employment.transaction do
       @employments.each(&:save!)
