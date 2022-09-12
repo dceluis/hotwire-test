@@ -1,0 +1,34 @@
+= form_with(model: @profile, html: { data: { controller: "form form-redirect", action: "turbo:submit-end->form-redirect#next", form_validate_url_value: validate_profile_path }}) do |f|
+  .space-y-4
+    div
+      = f.label :first_name, class: "b-label"
+      = f.text_field :first_name, class: "b-input", data: { action: "form#validate" }
+      div.text-red-600#first_name_error
+        = @profile.errors.full_messages_for(:first_name).join(", ")
+
+    div
+      = f.label :last_name, class: "b-label"
+      = f.text_field :last_name, class: "b-input", data: { action: "form#validate" }
+      div.text-red-600#last_name_error
+        = @profile.errors.full_messages_for(:last_name).join(", ")
+
+    div
+      = f.label :email, class: "b-label"
+      = f.text_field :email, class: "b-input", data: { action: "form#validate" }
+      div.text-red-600#email_error
+        = @profile.errors.full_messages_for(:email).join(", ")
+
+    div
+      = f.label :phone, class: "b-label"
+      = f.text_field :phone, class: "b-input", data: { action: "form#validate", controller: "mask", mask: "000-000-0000" }
+      div.text-red-600#phone_error
+        = @profile.errors.full_messages_for(:phone).join(", ")
+
+    div
+      = f.label :nickname, class: "b-label"
+      = f.text_field :nickname, class: "b-input", data: { action: "form#validate" }
+      div.text-red-600#nickname_error
+        = @profile.errors.full_messages_for(:nickname).join(", ")
+
+    div
+      = f.submit "Save", id: "submit_profile", class: "b-button", disabled: !@profile.valid?, data: { form_target: "validator" }

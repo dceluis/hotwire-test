@@ -6,8 +6,11 @@ ruby "3.1.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft"
+
+# Use mysql as the database for Active Record
+gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -35,11 +38,15 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem "slim-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "pry-rails"
+  gem "rspec-rails"
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'faker'
 end
 
 group :development do

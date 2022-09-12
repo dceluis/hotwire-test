@@ -1,0 +1,44 @@
+.py-10
+  header
+    .mx-auto.max-w-7xl.px-4.sm:px-6.lg:px-8
+      h1.text-3xl.font-bold.leading-tight.tracking-tight.text-gray-900 Dashboard
+  main
+    .mx-auto.max-w-7xl.sm:px-6.lg:px-8
+      div.space-y-4
+        div data-controller="modal"
+          button data-action="click->modal#open" class="b-button"
+            | Personal Data
+          div class="b-modal__container" data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
+            .b-modal__body
+              = turbo_frame_tag "new_profile_frame", src: "#{new_profile_path}"
+        div data-controller="modal" data-modal-open-value="#{@profile.present?}"
+          = button_tag id: "new_employment_button", class: "b-button", data: { action: "click->modal#open" }, disabled: @profile.blank? do
+            | Employment Data
+          div class="b-modal__container" data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
+            .b-modal__body
+              - if @profile
+                = turbo_frame_tag "new_employment_frame", src: "#{new_profile_employment_path(@profile)}"
+      div.space-y-4.mt-4
+        - Profile.all.each do |profile|
+          dl.border-t.border-gray-200
+            dt
+              | Name
+            dd
+              = profile.full_name
+            dt
+              | Email
+            dd
+              = profile.email
+            dt
+              | Phone
+            dd
+              = profile.phone
+            dt
+              | Employments
+            dd
+              - profile.employments.each do |employment|
+                p
+                  span.font-medium
+                    | #{employment.employer}:
+                  span
+                    | &nbsp;#{employment.start_date} - #{employment.end_date}

@@ -1,0 +1,8 @@
+= form_with(url: profile_employments_path(@profile), html: { class: "space-y-4", data: { controller: "form form-redirect", action: "turbo:submit-end->form-redirect#next", form_validate_url_value: validate_profile_employment_path(@profile) }}) do |f|
+  #employments.space-y-4
+    - @employments.each_with_index do |employment, i|
+      = render partial: "fields_for_employment", locals: { employment: employment, index: i }
+  div
+    = render partial: "add_employment", locals: { i: "1" }
+  div
+    = submit_tag "Save", id: "submit_employments", class: "b-button", data: { form_target: "validator" }, disabled: !@employments.map(&:valid?).all?
