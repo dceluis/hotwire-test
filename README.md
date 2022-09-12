@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Install dependencies
+```
+bundle install
+yarn install
+```
 
-Things you may want to cover:
+# setup database
+```
+bin/rails db:create
+bin/rails db:migrate
+```
 
-* Ruby version
+# run the server
+```
+bin/rails s
+```
 
-* System dependencies
+# To run specs:
+```
+bundle exec rspec
+```
 
-* Configuration
+and then navigate to localhost:3000
 
-* Database creation
+UX peek:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Peek 2022-09-03 20-32](https://user-images.githubusercontent.com/5464881/188293348-a525c544-b552-4316-9ca4-64e91059f6ad.gif)
